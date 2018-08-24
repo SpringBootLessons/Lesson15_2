@@ -1,4 +1,4 @@
-# Lesson15_2 - Transforming Cloudinary images
+# Lesson 15_2 - Transforming Cloudinary images
 ## Learning Objectives
 * Transforming Cloudinary images
 
@@ -17,7 +17,7 @@ public String createUrl(String name) {
  }
 ```
 
-    * After adding the code the Cloudinary class should look like this:
+    * After adding the code it should look like this:
 
 ```java
 import com.cloudinary.Cloudinary;
@@ -55,7 +55,7 @@ public class CloudinaryConfig {
 
   public String createUrl(String name) {
     return cloudinary.url().transformation( new Transformation().width(300)
-            .height(300).crop("fill").radius(10)
+            .height(300).crop("fill").radius(10).border(5, "green")
     ).generate(name);
   }
 }
@@ -69,7 +69,7 @@ public class CloudinaryConfig {
       String transformedImage = cloudc.createUrl(clodinaryImageId);
       actor.setHeadshot(transformedImage);
 ```
-   * HomeController should look like this now:
+    * HomeController should look like this now:
 
 ```java
 import com.cloudinary.utils.ObjectUtils;
@@ -127,16 +127,16 @@ public class HomeController {
 
 4. Run your application and open a browser go to http://localhost:8080/.
 
-
 ## What's Going On
-In this example, we're adding transformation to the uploaded images.
+
 All you need to do is upload the image to the Cloudianry server, and apply as
 many styles as you would like to to transform the image.
+
+In this example, we're adding transformation to the uploaded images.
 
 ## The Cloudinary Configuration Class
 
 ### public String createUrl()
 This creates a Cloudinary URL 'preset' trasnformations. In this case, the width,
-height, radius, and border can automatically be applied each time this method is called,
-and a URL to the transformed image will be returned.
-
+height, radius, and border can automatically be applied each time this method
+is called,and a URL to the transformed image will be returned.
